@@ -31,7 +31,7 @@
           <th>Date</th>
         </thead>
         <tbody>
-          <tr ng-repeat="email in dossierCourant.emails" class="clickable" ng-click="emailSelectionne.email">
+          <tr ng-repeat="email in dossierCourant.emails" class="clickable" ng-click="selectionEmail(email)">
             <td>{{email.from}}</td>
             <td>{{email.to}}</td>
             <td>{{email.subject}}</td>
