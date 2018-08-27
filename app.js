@@ -1,4 +1,4 @@
-angular.module("Webmail", [])
+angular.module("Webmail", ["ngSanitize"])
   .controller("WebmailCtrl", function($scope) {
     $scope.dossiers = [{
         value: "RECEPTION",
@@ -109,8 +109,16 @@ angular.module("Webmail", [])
         ]
       }
     ];
+    $scope.emailSelectionne = null;
+
     $scope.dossierCourant = null;
     $scope.selectionDossier = function(dossier) {
       $scope.dossierCourant = dossier
+      $scope.emailSelectionne = null;
     }
+    $scope.selectionEmail = function(email) {
+      $scope.emailSelectionne = email;
+    };
+
+
   })
