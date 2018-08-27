@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Webmail</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <!--[if lt IE 9]>
+            <script src="html5shiv.js"></script>
+        <![endif]-->
+
+</head>
+
+<body ng-app="Webmail" ng-controller="WebmailCtrl">
+  <div class="container">
+    <ul class="nav nav-pills spacer">
+      <li ng-repeat="dossier in dossiers" ng-class="{active:dossier == dossierCourant}"><a ng-click="selectionDossier(dossier)" href="#">{{dossier.label}}</a></li>
+    </ul>
+    <table class="table table-striped table-hover spacer">
+      <thead>
+        <th>De</th>
+        <th>&Agrave;</th>
+        <th>Objet</th>
+        <th>Date</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="email in dossierCourant.emails" class="clickable" ng-click="">
+          <td>{{email.from}}</td>
+          <td>{{email.to}}</td>
+          <td>{{email.subject}}</td>
+          <td>{{email.date}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+    <div class="alert alert-info">
+      le dossier contient {{dossierCourant.emails.length}} mails .
+
+    </div>
+  </div>
+  <div class="well">
+    <h1>Bonjour</h1>
+    <p><label for="expediteur">De</label>Toto</p>
+    <p><label for="destinataire">&Agrave; :</label>Joel</p>
+    <p><label for="Date">Date</label>22/03/2014</p>
+    <p>salut sa dit koi ? </p>
+  </div>
+  </div>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular-sanitize.min.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+
+</body>
+
+</html>
