@@ -1,6 +1,6 @@
 angular.module("Webmail", ["ngSanitize"])
   // le service location nous permet d'inclure l'etat de l'application dans l'url.
-  .controller("WebmailCtrl", function($scope, $location) {
+  .controller("WebmailCtrl", function($scope, $location, $filter) {
     $scope.dossiers = [{
         value: "RECEPTION",
         label: 'Boite de réception',
@@ -184,6 +184,10 @@ angular.module("Webmail", ["ngSanitize"])
       }
     });
     // on ajoute l'attribut recherche
+    $scope.getDossiersFiltres = function() {
+      // le service filter nous permet d'appeler les filtre en javascript
+      return $filter("filter")($scope.dossierCourant.emails, $scope.recherche);
+    }
     $scope.recherche = null;
     $scope.razRecherche = function() {
       $scope.recherche = null;
