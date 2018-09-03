@@ -137,6 +137,7 @@ angular.module("Webmail", ["ngSanitize"])
       }
 
     }
+
     //l'utilisation du filtre date selon la date
 
     // on crè une fonction pour trié les emails
@@ -148,6 +149,9 @@ angular.module("Webmail", ["ngSanitize"])
 
       };
     }
+    // recherche
+
+
     // watch permet de surveiller un function pour voir
     $scope.$watch(function() {
       // pour acceder au service $location
@@ -179,5 +183,11 @@ angular.module("Webmail", ["ngSanitize"])
         })
       }
     });
+    // on ajoute l'attribut recherche
+    $scope.recherche = null;
+    $scope.razRecherche = function() {
+      $scope.recherche = null;
+
+    }
 
   });

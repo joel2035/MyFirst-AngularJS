@@ -30,10 +30,11 @@
       <div class="input-group-addon">
         <span class="glyphicon glyphicon-search"></span>
       </div>
-
-      <input type="text" name="" value="" class="form-control" placeholder=" Rechercher un email ...">
+      <!-- pour recuperer une directive on utilise ng-model -->
+      <input ng-model="recherche" type="text" name="" value="" class="form-control" placeholder=" Rechercher un email ...">
       <div class="input-group-btn">
-        <button class="btn btn-default" type="button" name="button">
+        <!-- pour vider le champs de recherche on utilise razRecherche -->
+        <button class="btn btn-default" ng-click="razRecherche()" type="button" name="button">
             <span class="glyphicon glyphicon-remove"></span>
         </button>
 
@@ -69,7 +70,7 @@
         </thead>
         <tbody>
           <!-- pour aller sur le mail correspondant au click , on crè une methode et on utilise le filtre ordeByte pour trié -->
-          <tr ng-repeat="email in dossierCourant.emails | orderBy : champTri :triDescendant " class="clickable" ng-click="versEmail(dossierCourant, email)">
+          <tr ng-repeat="email in dossierCourant.emails | filter:recherche | orderBy : champTri :triDescendant " class="clickable" ng-click="versEmail(dossierCourant, email)">
             <td>{{email.from}}</td>
             <td>{{email.to}}</td>
             <td>{{email.subject}}</td>
