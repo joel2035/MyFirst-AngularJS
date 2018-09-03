@@ -191,4 +191,15 @@ angular.module("Webmail", ["ngSanitize"])
 
     }
 
+  })
+  .filter("surbrillanceRecherche", function() {
+    return function(input, recherche) {
+      if (recherche) {
+        // Rechercher en ignorant la casse;
+        return input.replace(new RegExp("(" + recherche + ")", "gi"),
+          // on capture la valeur de la recherche avec "("+recherche +")"
+          "<span class ='surbrillanceRecherche'>$1</span>")
+      }
+      return input;
+    }
   });

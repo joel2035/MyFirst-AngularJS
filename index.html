@@ -71,9 +71,9 @@
         <tbody>
           <!-- pour aller sur le mail correspondant au click , on crè une methode et on utilise le filtre ordeByte pour trié -->
           <tr ng-repeat="email in emailsFiltres =  (dossierCourant.emails| filter : recherche) | orderBy : champTri :triDescendant " class="clickable" ng-click="versEmail(dossierCourant, email)">
-            <td>{{email.from}}</td>
-            <td>{{email.to}}</td>
-            <td>{{email.subject}}</td>
+            <td ng-bind-html="email.from | surbrillanceRecherche:recherche"></td>
+            <td ng-bind-html="email.to | surbrillanceRecherche:recherche"></td>
+            <td ng-bind-html="email.subject | surbrillanceRecherche:recherche"></td>
             <td>{{email.date|date:'short'}}</td>
             <!-- short correspond à la date et au format cours et est un format Américain pour la modifier et utiliser la local francaise on ajoute une balise script qui contient la local française  -->
           </tr>
