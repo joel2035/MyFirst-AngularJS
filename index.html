@@ -70,7 +70,7 @@
         </thead>
         <tbody>
           <!-- pour aller sur le mail correspondant au click , on crè une methode et on utilise le filtre ordeByte pour trié -->
-          <tr ng-repeat="email in getDossiersFiltres() | orderBy : champTri :triDescendant " class="clickable" ng-click="versEmail(dossierCourant, email)">
+          <tr ng-repeat="email in emailsFiltres =  (dossierCourant.emails| filter : recherche) | orderBy : champTri :triDescendant " class="clickable" ng-click="versEmail(dossierCourant, email)">
             <td>{{email.from}}</td>
             <td>{{email.to}}</td>
             <td>{{email.subject}}</td>
@@ -81,7 +81,7 @@
       </table>
       <div class="alert alert-info">
         <!-- on met un filtre sur l'email pour avoir le nombre de mail de la personne qui l'envoi-->
-        le dossier contient {{getDossiersFiltres().length}} mails
+        le dossier contient {{ emailsFiltres.length}} mails
       </div>
     </div>
 
